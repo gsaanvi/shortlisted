@@ -5,13 +5,6 @@ from flask import Flask, request, jsonify, send_from_directory
 from utils import extract_text_from_pdf
 from analyzer import run_full_analysis
 import os
-import nltk
-
-nltk.download('averaged_perceptron_tagger_eng', quiet=True)
-nltk.download('punkt', quiet=True)
-nltk.download('stopwords', quiet=True)
-nltk.download('wordnet', quiet=True)
-nltk.download('punkt_tab', quiet=True)
 
 app = Flask(__name__, static_folder='.')
 

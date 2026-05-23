@@ -2,47 +2,6 @@
 
 import pdfplumber
 import re
-import nltk
-
-nltk.download('stopwords', quiet=True)
-nltk.download('punkt', quiet=True)
-nltk.download('punkt_tab', quiet=True)
-nltk.download('wordnet', quiet=True)
-nltk.download('averaged_perceptron_tagger_eng', quiet=True)
-
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize, sent_tokenize
-from nltk.stem import WordNetLemmatizer
-
-lemmatizer = WordNetLemmatizer()
-STOPWORDS = set(stopwords.words('english'))
-
-
-# EXTRA_STOPWORDS = {
-#     'application', 'applications', 'system', 'systems', 'service', 'services',
-#     'solution', 'solutions', 'software', 'technology', 'technologies',
-#     'framework', 'frameworks', 'platform', 'platforms', 'environment',
-#     'tool', 'tools', 'code', 'coding', 'codebase', 'standard', 'standards',
-#     'practice', 'practices', 'process', 'processes', 'project', 'projects',
-#     'product', 'products', 'business', 'client', 'clients', 'customer',
-#     'user', 'users', 'team', 'teams', 'member', 'members', 'role', 'roles',
-#     'candidate', 'position', 'company', 'organization', 'industry',
-#     'experience', 'skill', 'skills', 'knowledge', 'ability', 'understanding',
-#     'proficiency', 'expertise', 'familiarity', 'requirement', 'requirements',
-#     'responsibility', 'responsibilities', 'opportunity', 'benefit', 'benefits',
-#     'year', 'years', 'month', 'months', 'day', 'days', 'time', 'date',
-#     'work', 'working', 'job', 'career', 'field', 'area', 'domain',
-#     'feature', 'features', 'issue', 'issues', 'problem', 'problems',
-#     'task', 'tasks', 'goal', 'goals', 'result', 'results', 'output',
-#     'quality', 'performance', 'efficiency', 'reliability', 'scalability',
-#     'security', 'maintenance', 'development', 'implementation', 'integration',
-#     'management', 'analysis', 'design', 'testing', 'deployment', 'monitoring',
-#     'documentation', 'communication', 'collaboration', 'coordination',
-#     'bachelor', 'master', 'degree', 'science', 'engineering', 'computer',
-#     'information', 'data', 'database', 'network', 'web', 'mobile', 'cloud',
-#     'api', 'apis', 'interface', 'architecture', 'infrastructure',
-#     'salary', 'package', 'benefit', 'location', 'remote', 'hybrid', 'office',
-# }
 
 
 SKILL_VARIATIONS = {
@@ -51,7 +10,7 @@ SKILL_VARIATIONS = {
     'java': ['java'],
     'javascript': ['javascript', 'js'],
     'typescript': ['typescript', 'ts'],
-    'cpp': ['c++', 'cpp', 'c/c++', 'c/ c++'],
+    'cpp': ['c++', 'cpp', 'c/c++', 'c/ c++', 'c/c'],
     'csharp': ['c#', 'csharp'],
     'golang': ['golang', 'go lang', 'go'],
     'ruby': ['ruby'],
@@ -81,7 +40,6 @@ SKILL_VARIATIONS = {
     'webpack': ['webpack'],
     'vite': ['vite'],
     'sass': ['sass', 'scss'],
-    'typescript': ['typescript', 'ts'],
     'three.js': ['three.js', 'threejs'],
 
     # Backend 
@@ -184,8 +142,6 @@ SKILL_VARIATIONS = {
     'flutter': ['flutter'],
     'android': ['android', 'android development'],
     'ios': ['ios', 'ios development'],
-    'swift': ['swift'],
-    'kotlin': ['kotlin'],
 
     # Testing
     'selenium': ['selenium'],
@@ -201,9 +157,6 @@ SKILL_VARIATIONS = {
     'scrum': ['scrum'],
     'jira': ['jira'],
     'figma': ['figma'],
-    'git': ['git'],
-    'linux': ['linux'],
-    'microservices': ['microservices'],
     'system design': ['system design'],
     'object oriented': ['object oriented', 'oop', 'oops'],
     'data structures': ['data structures', 'dsa'],
@@ -301,7 +254,8 @@ def extract_skills_from_text(text):
     """
     Extracts known skills from text using variant matching.
     Returns dict: canonical_skill -> count
-    handles all variations automatically via VARIANT_TO_CANONICAL map.
+    Handles all variations automatically via VARIANT_TO_CANONICAL map.
+    Special characters like + and # handled without word boundaries.
     """
     text_lower = normalize_text(text)
     found = {}
@@ -310,11 +264,17 @@ def extract_skills_from_text(text):
     all_variants = sorted(VARIANT_TO_CANONICAL.keys(), key=len, reverse=True)
 
     for variant in all_variants:
-        pattern = r'\b' + re.escape(variant) + r'\b'
+        # For variants with special characters like c++, c#, c/c++
+        # \b word boundaries don't work next to + / # characters
+        # so we use plain match without boundaries for these
+        if any(c in variant for c in ['+', '#', '/']):
+            pattern = re.escape(variant)
+        else:
+            pattern = r'\b' + re.escape(variant) + r'\b'
+
         matches = re.findall(pattern, text_lower)
         if matches:
             canonical = VARIANT_TO_CANONICAL[variant]
-            # Only count if not already found via another variant
             if canonical not in found:
                 found[canonical] = len(matches)
             else:

@@ -193,7 +193,6 @@ def run_full_analysis(resume_text, jd_text):
     final_score, capped, high_missing = apply_cap(score, missing)
 
     # Extra skills in resume but not required by JD
-    from utils import extract_skills_from_text
     resume_skills = extract_skills_from_text(resume_text)
     jd_skill_names = set(matched.keys()) | set(missing.keys())
     extra_skills = [
