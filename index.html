@@ -6,7 +6,7 @@
   <title>Shortlisted — ATS Resume Analyzer</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    /* ── RESET & BASE ── */
+    /* RESET & BASE */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     [id] { scroll-margin-top: 80px; }
@@ -17,7 +17,7 @@
       line-height: 1.5;
     }
 
-    /* ── NAVBAR ── */
+    /* NAVBAR */
     .nav {
       position: sticky;
       top: 0;
@@ -70,11 +70,11 @@
     }
     .nav-cta:hover { background: #4338CA; transform: translateY(-1px); }
 
-    /* ── PAGES ── */
+    /* PAGES */
     .page { display: none; }
     .page.active { display: block; }
 
-    /* ── HERO ── */
+    /*HERO */
     .hero {
       background: white;
       border-bottom: 1px solid #EAEAF2;
@@ -144,14 +144,14 @@
       flex-shrink: 0;
     }
 
-    /* ── CONTENT WRAPPER ── */
+    /* CONTENT WRAPPER */
     .content {
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 40px;
     }
 
-    /* ── STATS ── */
+    /* STATS */
     .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -181,7 +181,7 @@
     .stat-orange .stat-label { color: #9A3412; }
     .stat-green  .stat-label { color: #065F46; }
 
-    /* ── SECTION HEADERS ── */
+    /* SECTION HEADERS */
     .sec-head {
       text-align: center;
       margin: 56px 0 28px;
@@ -206,7 +206,7 @@
       letter-spacing: -0.5px;
     }
 
-    /* ── STEPS ── */
+    /*STEPS */
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -251,7 +251,7 @@
     }
     .step-desc { font-size: 14px; color: #666680; line-height: 1.6; }
 
-    /* ── FEATURES ── */
+    /* FEATURES */
     .feats {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -272,7 +272,7 @@
     .feat-title { font-size: 15px; font-weight: 700; color: #0A0A14; margin-bottom: 4px; }
     .feat-desc { font-size: 13px; color: #888899; line-height: 1.5; }
 
-    /* ── CTA STRIP ── */
+    /* CTA STRIP*/
     .cta-strip {
       background: #4F46E5;
       border-radius: 20px;
@@ -306,7 +306,7 @@
     }
     .cta-strip-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     .footer {
       text-align: center;
       padding: 28px;
@@ -317,7 +317,7 @@
       background: white;
     }
 
-    /* ── TOOL PAGE ── */
+    /* TOOL PAGE */
     .tool-wrap {
       max-width: 860px;
       margin: 0 auto;
@@ -336,7 +336,7 @@
       margin-bottom: 32px;
     }
 
-    /* ── INPUT SECTION ── */
+    /* INPUT SECTION */
     .input-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -398,7 +398,7 @@
     textarea.jd-input:focus { border-color: #4F46E5; }
     textarea.jd-input::placeholder { color: #CCCCDD; }
 
-    /* ── RUN BUTTON ── */
+    /* RUN BUTTON */
     .btn-center { display: flex; justify-content: center; }
     .run-btn {
       background: #4F46E5;
@@ -415,7 +415,7 @@
     .run-btn:hover { background: #4338CA; transform: translateY(-1px); }
     .run-btn:disabled { background: #A5B4FC; cursor: not-allowed; transform: none; }
 
-    /* ── ERROR MESSAGE ── */
+    /* ERROR MESSAGE */
     .error-msg {
       background: #FFF1F2;
       border: 1px solid #FECDD3;
@@ -427,7 +427,7 @@
       display: none;
     }
 
-    /* ── LOADING ── */
+    /* LOADING */
     .loading {
       text-align: center;
       padding: 60px 0;
@@ -444,7 +444,7 @@
     @keyframes spin { to { transform: rotate(360deg); } }
     .loading-text { font-size: 15px; color: #888899; }
 
-    /* ── RESULTS ── */
+    /* RESULTS */
     .results { display: none; }
 
     .success-banner {
@@ -675,9 +675,7 @@
 </head>
 <body>
 
-<!-- ════════════════════════════════════════
-     NAVBAR
-════════════════════════════════════════ -->
+<!--NAVBAR -->
 <nav class="nav" id="navbar">
   <a class="nav-logo" href="#" onclick="showPage('landing'); return false;">Short<span>listed</span></a>
   <div class="nav-links" id="landing-nav-links">
@@ -687,9 +685,7 @@
   </div>
 </nav>
 
-<!-- ════════════════════════════════════════
-     PAGE 1 — LANDING
-════════════════════════════════════════ -->
+<!-- PAGE 1 — LANDING-->
 <div class="page active" id="page-landing">
 
   <!-- Hero -->
@@ -890,9 +886,7 @@
 </div>
 
 
-<!-- ════════════════════════════════════════
-     PAGE 2 — TOOL
-════════════════════════════════════════ -->
+<!-- PAGE 2 — TOOL-->
 <div class="page" id="page-tool">
   <div class="tool-wrap">
 
@@ -953,14 +947,14 @@
 
 
 <script>
-  // ── PAGE ROUTING ──
+  // PAGE ROUTING
   function showPage(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + page).classList.add('active');
     window.scrollTo(0, 0);
     const landingLinks = document.getElementById('landing-nav-links');
     landingLinks.style.display = page === 'landing' ? 'flex' : 'none';
-    // Update URL hash so browser back button works
+  
     if (page === 'landing') {
       history.pushState(null, '', '#');
     } else {
@@ -968,7 +962,7 @@
     }
   }
 
-  // Handle browser back/forward buttons
+  
   window.addEventListener('popstate', function() {
     if (window.location.hash === '#tool') {
       showPage('tool');
@@ -978,7 +972,7 @@
     }
   });
 
-  // ── FILE SELECT ──
+  // FILE SELECT
   function handleFileSelect(input) {
     const file = input.files[0];
     const area = document.getElementById('upload-area');
@@ -989,7 +983,7 @@
     }
   }
 
-  // ── RUN ANALYSIS ──
+  // RUN ANALYSIS
   async function runAnalysis() {
     const fileInput = document.getElementById('resume-file');
     const jdText = document.getElementById('jd-input').value.trim();
@@ -1047,7 +1041,7 @@
     el.style.display = 'block';
   }
 
-  // ── RENDER RESULTS ──
+  // RENDER RESULTS
   function renderResults(d) {
     const score = d.combined_score;
     const matchPct = d.total_matched + d.total_missing > 0
@@ -1071,7 +1065,7 @@
       ? `<div style="margin-top:8px;font-size:12px;color:#DC2626;font-weight:500;">⚠ Score capped — ${d.high_priority_missing} critical keywords missing</div>`
       : '';
 
-    // ── BUILD JD SKILLS LIST ──
+    // JD SKILLS LIST
     // Split into high priority and standard
     const highPrioritySkills = d.all_jd_skills
       .filter(s => s.priority === 'high')
@@ -1127,7 +1121,7 @@
         </div>`;
     }
 
-    // ── BUILD EXTRA SKILLS ──
+    // EXTRA SKILLS
     let extraSkillsHtml = '';
     if (d.extra_skills && d.extra_skills.length > 0) {
       const tags = d.extra_skills.map(s =>
@@ -1145,7 +1139,7 @@
         </div>`;
     }
 
-    // ── BUILD ISSUES ──
+    // ISSUES
     let issuesHtml = '';
     if (d.formatting_issues.length === 0) {
       issuesHtml = `<div class="issue-item">
@@ -1162,14 +1156,14 @@
       }
     }
 
-    // ── BUILD SUGGESTIONS ──
+    // SUGGESTIONS
     let sugHtml = d.suggestions.map((s, i) => `
       <div class="sug-item">
         <div class="sug-num">${i + 1}</div>
         <div class="sug-text">${s}</div>
       </div>`).join('');
 
-    // ── RENDER ──
+    // RENDER
     document.getElementById('results').innerHTML = `
 
       <div class="success-banner">✓ Analysis complete</div>
@@ -1247,7 +1241,7 @@
     window.scrollTo(0, 0);
   }
 
-  // ── RESET TOOL ──
+  // RESET TOOL
   function resetTool() {
     document.getElementById('resume-file').value = '';
     document.getElementById('jd-input').value = '';

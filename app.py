@@ -1,8 +1,5 @@
-# app.py
-# ─────────────────────────────────────────────
-# Shortlisted — Flask server
 # Connects frontend HTML to Python analysis
-# ─────────────────────────────────────────────
+
 
 from flask import Flask, request, jsonify, send_from_directory
 from utils import extract_text_from_pdf
@@ -19,13 +16,13 @@ nltk.download('punkt_tab', quiet=True)
 app = Flask(__name__, static_folder='.')
 
 
-# ── Serve the frontend ──
+# Serve the frontend
 @app.route('/')
 def index():
     return send_from_directory('.', 'index.html')
 
 
-# ── Analysis endpoint ──
+# Analysis endpoint
 @app.route('/analyze', methods=['POST'])
 def analyze():
     # Validate inputs

@@ -1,9 +1,5 @@
-# analyzer.py
-# ─────────────────────────────────────────────
 # Shortlisted — Core analysis engine
-# ─────────────────────────────────────────────
 
-# analyzer.py
 import re
 from utils import (
     extract_skills_from_text,
@@ -196,7 +192,7 @@ def run_full_analysis(resume_text, jd_text):
     score = calculate_score(matched, missing)
     final_score, capped, high_missing = apply_cap(score, missing)
 
-    # ── NEW: Extra skills in resume but not required by JD ──
+    # Extra skills in resume but not required by JD
     from utils import extract_skills_from_text
     resume_skills = extract_skills_from_text(resume_text)
     jd_skill_names = set(matched.keys()) | set(missing.keys())
@@ -206,7 +202,7 @@ def run_full_analysis(resume_text, jd_text):
     ]
     extra_skills.sort()
 
-    # ── NEW: Summary line ──
+    #Summary line
     total_jd = len(matched) + len(missing)
     summary_line = (
         f"Your resume covers {len(matched)} of {total_jd} "
@@ -216,8 +212,7 @@ def run_full_analysis(resume_text, jd_text):
            if extra_skills else ".")
     )
 
-    # ── NEW: All JD skills sorted by priority then name ──
-    # High priority first, within each group ✅ before ❌
+    # All JD skills sorted by priority then name
     all_jd_skills = []
     for kw, info in sorted(
         {**matched, **missing}.items(),
