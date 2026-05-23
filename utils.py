@@ -51,7 +51,7 @@ SKILL_VARIATIONS = {
     'java': ['java'],
     'javascript': ['javascript', 'js'],
     'typescript': ['typescript', 'ts'],
-    'cpp': ['c++', 'cpp'],
+    'cpp': ['c++', 'cpp', 'c/c++', 'c/ c++'],
     'csharp': ['c#', 'csharp'],
     'golang': ['golang', 'go lang', 'go'],
     'ruby': ['ruby'],
