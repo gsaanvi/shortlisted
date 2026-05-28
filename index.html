@@ -24,7 +24,7 @@
       z-index: 100;
       background: white;
       border-bottom: 1px solid #EAEAF2;
-      padding: 0 60px;
+      padding: 0 40px;
       height: 60px;
       display: flex;
       align-items: center;
@@ -36,6 +36,7 @@
       color: #0A0A14;
       letter-spacing: -0.5px;
       text-decoration: none;
+      flex-shrink: 0;
     }
     .nav-logo span { color: #4F46E5; }
     .nav-links {
@@ -67,6 +68,7 @@
       cursor: pointer;
       transition: all 0.15s;
       text-decoration: none;
+      white-space: nowrap;
     }
     .nav-cta:hover { background: #4338CA; transform: translateY(-1px); }
 
@@ -74,12 +76,19 @@
     .page { display: none; }
     .page.active { display: block; }
 
-    /*HERO */
+    /* HERO */
     .hero {
       background: white;
       border-bottom: 1px solid #EAEAF2;
-      padding: 80px 60px 60px;
-      text-align: center;
+      padding: 60px 80px;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
     }
     .hero-tag {
       display: inline-block;
@@ -93,7 +102,7 @@
       margin-bottom: 24px;
     }
     .hero h1 {
-      font-size: 60px;
+      font-size: 52px;
       font-weight: 800;
       line-height: 1.05;
       letter-spacing: -2px;
@@ -106,8 +115,7 @@
       font-size: 18px;
       color: #666680;
       line-height: 1.65;
-      max-width: 500px;
-      margin: 0 auto 32px;
+      margin: 0 0 28px;
     }
     .hero-btn {
       display: inline-block;
@@ -125,9 +133,10 @@
     .hero-btn:hover { background: #4338CA; transform: translateY(-1px); }
     .trust {
       display: flex;
-      justify-content: center;
-      gap: 24px;
+      justify-content: flex-start;
+      gap: 20px;
       flex-wrap: wrap;
+      margin-top: 16px;
     }
     .trust-item {
       display: flex;
@@ -206,7 +215,7 @@
       letter-spacing: -0.5px;
     }
 
-    /*STEPS */
+    /* STEPS */
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -272,7 +281,7 @@
     .feat-title { font-size: 15px; font-weight: 700; color: #0A0A14; margin-bottom: 4px; }
     .feat-desc { font-size: 13px; color: #888899; line-height: 1.5; }
 
-    /* CTA STRIP*/
+    /* CTA STRIP */
     .cta-strip {
       background: #4F46E5;
       border-radius: 20px;
@@ -308,14 +317,42 @@
 
     /* FOOTER */
     .footer {
-      text-align: center;
-      padding: 28px;
+      background: white;
+      border-top: 1px solid #EAEAF2;
+      margin-top: 40px;
+      padding: 32px 40px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-left {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0A0A14;
+    }
+    .footer-left span { color: #4F46E5; }
+    .footer-center {
       font-size: 13px;
       color: #AAAACC;
-      margin-top: 40px;
-      border-top: 1px solid #EAEAF2;
-      background: white;
     }
+    .footer-right {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .footer-link {
+      font-size: 13px;
+      color: #666680;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-link:hover { color: #4F46E5; }
 
     /* TOOL PAGE */
     .tool-wrap {
@@ -446,7 +483,6 @@
 
     /* RESULTS */
     .results { display: none; }
-
     .success-banner {
       font-size: 14px;
       color: #059669;
@@ -505,11 +541,7 @@
       margin-bottom: 6px;
     }
     .score-desc { font-size: 13px; color: #666680; line-height: 1.6; margin-bottom: 12px; }
-    .score-breakdown {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+    .score-breakdown { display: flex; gap: 16px; flex-wrap: wrap; }
     .breakdown-item {
       font-size: 12px;
       color: #888899;
@@ -517,11 +549,7 @@
       align-items: center;
       gap: 4px;
     }
-    .breakdown-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      display: inline-block;
-    }
+    .breakdown-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
 
     /* Result cards */
     .result-card {
@@ -539,14 +567,11 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-wrap: wrap;
     }
 
     /* Keyword grid */
-    .kw-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
+    .kw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .kw-section-title {
       font-size: 12px;
       font-weight: 700;
@@ -575,12 +600,7 @@
       margin-bottom: 6px;
     }
     .kw-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .kw-tag {
-      font-size: 12px;
-      font-weight: 500;
-      padding: 3px 10px;
-      border-radius: 20px;
-    }
+    .kw-tag { font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
     .kw-tag-green { background: #F0FDF4; color: #166534; border: 1px solid #BBF7D0; }
     .kw-tag-green-hi { background: #DCFCE7; color: #166534; border: 1px solid #86EFAC; font-weight: 600; }
     .kw-tag-red { background: #FFF1F2; color: #9F1239; border: 1px solid #FECDD3; }
@@ -601,11 +621,7 @@
       background: #059669;
       transition: width 0.6s ease;
     }
-    .match-bar-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-    }
+    .match-bar-labels { display: flex; justify-content: space-between; font-size: 12px; }
 
     /* Issue items */
     .issue-item {
@@ -619,12 +635,7 @@
       line-height: 1.6;
     }
     .issue-item:last-child { border-bottom: none; }
-    .issue-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 6px;
-    }
+    .issue-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
 
     /* Suggestion items */
     .sug-item {
@@ -668,14 +679,160 @@
       width: fit-content;
     }
     .analyze-again:hover { background: #EEF2FF; }
-
-    /* empty state for keywords */
     .kw-empty { font-size: 13px; color: #AAAACC; font-style: italic; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+
+      /* Navbar */
+      .nav {
+        padding: 0 20px;
+        height: auto;
+        min-height: 56px;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      .nav-links {
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+      .nav-link {
+        font-size: 12px;
+        padding: 5px 10px;
+        display: none;
+      }
+      .nav-cta {
+        font-size: 12px;
+        padding: 7px 14px;
+      }
+
+      /* Hero */
+      .hero { padding: 36px 20px; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .hero h1 {
+        font-size: 34px;
+        letter-spacing: -1px;
+      }
+      .hero-sub { font-size: 15px; }
+      .hero-btn {
+        font-size: 15px;
+        padding: 12px 24px;
+        width: 100%;
+        text-align: center;
+      }
+      .trust { gap: 12px; }
+      .trust-item { font-size: 12px; }
+
+      /* Hero mockup hidden on mobile — too complex */
+      .hero-mockup { display: none; }
+
+      /* Content */
+      .content { padding: 0 20px; }
+
+      /* Stats */
+      .stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 24px 0 0;
+      }
+      .stat { padding: 20px; }
+      .stat-num { font-size: 36px; }
+
+      /* Section headers */
+      .sec-head { margin: 36px 0 20px; }
+      .sec-h2 { font-size: 22px; }
+
+      /* Steps */
+      .steps { grid-template-columns: 1fr; gap: 12px; }
+      .step { padding: 20px; }
+
+      /* Features */
+      .feats { grid-template-columns: 1fr; gap: 12px; }
+
+      /* CTA strip */
+      .cta-strip {
+        padding: 36px 24px;
+        border-radius: 14px;
+      }
+      .cta-strip h2 { font-size: 22px; }
+      .cta-strip p { font-size: 14px; }
+      .cta-strip-btn {
+        font-size: 14px;
+        padding: 11px 24px;
+        width: 100%;
+      }
+
+      /* Footer */
+      .footer { padding: 24px 20px; }
+      .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
+      }
+
+      /* Tool page */
+      .tool-wrap { padding: 24px 16px 60px; }
+      .tool-title { font-size: 22px; }
+      .tool-sub { font-size: 14px; margin-bottom: 20px; }
+
+      /* Input grid — stack on mobile */
+      .input-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .upload-area { padding: 24px 16px; }
+      textarea.jd-input { height: 140px; }
+
+      /* Run button */
+      .run-btn {
+        font-size: 14px;
+        padding: 12px 32px;
+        width: 100%;
+      }
+
+      /* Score card — stack on mobile */
+      .score-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 20px;
+      }
+      .score-big { font-size: 56px; }
+      .score-divider {
+        width: 100%;
+        height: 1px;
+        align-self: auto;
+      }
+      .score-info { padding-left: 0; }
+      .score-title { font-size: 18px; }
+
+      /* Result cards */
+      .result-card { padding: 16px; }
+      .result-card-title { font-size: 14px; }
+
+      /* Skills grid — single column on mobile */
+      .skills-grid-mobile { grid-template-columns: 1fr !important; }
+
+      /* Analyze again */
+      .analyze-again { width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 28px; }
+      .nav-logo { font-size: 17px; }
+      .stat-num { font-size: 32px; }
+    }
   </style>
 </head>
 <body>
 
-<!--NAVBAR -->
+<!-- NAVBAR -->
 <nav class="nav" id="navbar">
   <a class="nav-logo" href="#" onclick="showPage('landing'); return false;">Short<span>listed</span></a>
   <div class="nav-links" id="landing-nav-links">
@@ -685,34 +842,30 @@
   </div>
 </nav>
 
-<!-- PAGE 1 — LANDING-->
+<!-- PAGE 1 — LANDING -->
 <div class="page active" id="page-landing">
 
   <!-- Hero -->
-  <div class="hero" style="text-align:left;padding:60px 80px;">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1100px;margin:0 auto;">
+  <div class="hero">
+    <div class="hero-inner">
 
       <!-- LEFT: Text -->
       <div>
         <div class="hero-tag">🔥 75% of resumes never reach a human recruiter</div>
-        <h1 style="font-size:52px;font-weight:800;line-height:1.05;letter-spacing:-2px;
-                   color:#0A0A14;margin-bottom:20px;">
-          Stop Getting <span class="vi">Rejected.</span><br>
-          Start Getting <span class="vg">Hired.</span>
-        </h1>
-        <p class="hero-sub" style="text-align:left;margin:0 0 28px;">
+        <h1>Stop Getting <span class="vi">Rejected.</span><br>Start Getting <span class="vg">Hired.</span></h1>
+        <p class="hero-sub">
           Upload your resume, paste any job description — get exactly what's holding you back from being shortlisted.
         </p>
         <button class="hero-btn" onclick="showPage('tool'); resetTool();">Check My Resume Now →</button>
-        <div class="trust" style="justify-content:flex-start;margin-top:16px;">
+        <div class="trust">
           <span class="trust-item"><span class="trust-dot"></span>Free forever</span>
           <span class="trust-item"><span class="trust-dot"></span>No account needed</span>
           <span class="trust-item"><span class="trust-dot"></span>Results in 60 seconds</span>
         </div>
       </div>
 
-      <!-- RIGHT: Mockup -->
-      <div style="position:relative;">
+      <!-- RIGHT: Mockup (hidden on mobile) -->
+      <div class="hero-mockup" style="position:relative;">
         <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);
                     background:#4F46E5;color:white;font-size:11px;font-weight:700;
                     padding:4px 14px;border-radius:20px;letter-spacing:0.5px;
@@ -721,14 +874,10 @@
         </div>
         <div style="background:white;border:1px solid #EAEAF2;border-radius:16px;
                     padding:20px;box-shadow:0 8px 32px rgba(0,0,0,0.1);margin-top:16px;">
-
-          <!-- Summary line -->
           <div style="background:#F8F8FC;border:1px solid #EAEAF2;border-radius:8px;
                       padding:10px 14px;font-size:12px;color:#0A0A14;font-weight:500;margin-bottom:14px;">
             📋 Your resume covers 6 of 8 skills this role asks for, plus 3 additional skills not required.
           </div>
-
-          <!-- Score -->
           <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:10px;
                       padding:14px 18px;display:flex;align-items:center;gap:16px;margin-bottom:14px;">
             <div style="font-size:42px;font-weight:800;color:#059669;letter-spacing:-1.5px;line-height:1;">78%</div>
@@ -739,54 +888,41 @@
               <div style="font-size:11px;color:#666680;">Well aligned with this job description.</div>
             </div>
           </div>
-
-          <!-- Skills preview — matches real UI style -->
           <div style="border:1px solid #EAEAF2;border-radius:10px;padding:14px;margin-bottom:14px;">
             <div style="font-size:11px;font-weight:700;color:#0A0A14;margin-bottom:10px;">
               🔑 Skills Required by This JD
               <span style="color:#888;font-weight:400;font-size:10px;margin-left:6px;">6 found · 2 missing · 8 total</span>
             </div>
-            <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;
-                        color:#4F46E5;margin-bottom:6px;">★ High Priority</div>
+            <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:#4F46E5;margin-bottom:6px;">★ High Priority</div>
             <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F5FA;">
               <span style="color:#059669;font-size:12px;">✅</span>
-              <span style="background:#F0FDF4;color:#166534;border:1px solid #BBF7D0;
-                           padding:2px 8px;border-radius:12px;font-size:11px;">python</span>
+              <span style="background:#F0FDF4;color:#166534;border:1px solid #BBF7D0;padding:2px 8px;border-radius:12px;font-size:11px;">python</span>
               <span style="font-size:9px;color:#AAAACC;">technical</span>
             </div>
             <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F5FA;">
               <span style="color:#059669;font-size:12px;">✅</span>
-              <span style="background:#F0FDF4;color:#166534;border:1px solid #BBF7D0;
-                           padding:2px 8px;border-radius:12px;font-size:11px;">react</span>
+              <span style="background:#F0FDF4;color:#166534;border:1px solid #BBF7D0;padding:2px 8px;border-radius:12px;font-size:11px;">react</span>
               <span style="font-size:9px;color:#AAAACC;">technical</span>
             </div>
             <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #F5F5FA;">
               <span style="color:#DC2626;font-size:12px;">❌</span>
-              <span style="background:#FFF1F2;color:#9F1239;border:1px solid #FECDD3;
-                           padding:2px 8px;border-radius:12px;font-size:11px;">docker</span>
+              <span style="background:#FFF1F2;color:#9F1239;border:1px solid #FECDD3;padding:2px 8px;border-radius:12px;font-size:11px;">docker</span>
               <span style="font-size:9px;color:#AAAACC;">technical</span>
             </div>
             <div style="display:flex;align-items:center;gap:8px;padding:5px 0;">
               <span style="color:#DC2626;font-size:12px;">❌</span>
-              <span style="background:#FFF1F2;color:#9F1239;border:1px solid #FECDD3;
-                           padding:2px 8px;border-radius:12px;font-size:11px;">aws</span>
+              <span style="background:#FFF1F2;color:#9F1239;border:1px solid #FECDD3;padding:2px 8px;border-radius:12px;font-size:11px;">aws</span>
               <span style="font-size:9px;color:#AAAACC;">technical</span>
             </div>
           </div>
-
-          <!-- Extra skills -->
           <div style="border:1px solid #EAEAF2;border-radius:10px;padding:12px;">
             <div style="font-size:11px;font-weight:700;color:#0A0A14;margin-bottom:8px;">⭐ Your Extra Skills</div>
             <div>
-              <span style="background:#EEF2FF;color:#4338CA;border:1px solid #C7D2FE;
-                           padding:2px 8px;border-radius:12px;font-size:11px;margin:2px;display:inline-block;">git</span>
-              <span style="background:#EEF2FF;color:#4338CA;border:1px solid #C7D2FE;
-                           padding:2px 8px;border-radius:12px;font-size:11px;margin:2px;display:inline-block;">postgresql</span>
-              <span style="background:#EEF2FF;color:#4338CA;border:1px solid #C7D2FE;
-                           padding:2px 8px;border-radius:12px;font-size:11px;margin:2px;display:inline-block;">agile</span>
+              <span style="background:#EEF2FF;color:#4338CA;border:1px solid #C7D2FE;padding:2px 8px;border-radius:12px;font-size:11px;margin:2px;display:inline-block;">git</span>
+              <span style="background:#EEF2FF;color:#4338CA;border:1px solid #C7D2FE;padding:2px 8px;border-radius:12px;font-size:11px;margin:2px;display:inline-block;">postgresql</span>
+              <span style="background:#EEF2FF;color:#4338CA;border:1px solid #C7D2FE;padding:2px 8px;border-radius:12px;font-size:11px;margin:2px;display:inline-block;">agile</span>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -882,32 +1018,42 @@
 
   </div>
 
-  <div class="footer">Shortlisted © 2025 · Built with Python & Flask</div>
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">Short<span>listed</span></div>
+      <div class="footer-center">© 2026 · Built with Python & Flask by Saanvi Gupta</div>
+      <div class="footer-right">
+        <a href="https://linkedin.com/in/saanvi-gupta25" target="_blank" class="footer-link">LinkedIn</a>
+        <a href="https://github.com/gsaanvi" target="_blank" class="footer-link">GitHub</a>
+        <a href="mailto:gsaanvi08@gmail.com" class="footer-link">Contact</a>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 
-<!-- PAGE 2 — TOOL-->
+<!-- PAGE 2 — TOOL -->
 <div class="page" id="page-tool">
   <div class="tool-wrap">
 
-      <div style="display:flex;align-items:center;justify-content:space-between;
-                  padding-bottom:20px;margin-bottom:24px;border-bottom:1px solid #EAEAF2;">
-        <div class="nav-logo" style="font-size:18px;">Short<span style="color:#4F46E5;">listed</span></div>
-        <button onclick="showPage('landing'); resetTool();"
-                style="font-size:13px;font-weight:500;color:#666680;background:white;
-                       border:1px solid #DDDDE8;padding:6px 14px;border-radius:8px;
-                       cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s;">
-          ← Back to home
-        </button>
-      </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;
+                padding-bottom:20px;margin-bottom:24px;border-bottom:1px solid #EAEAF2;">
+      <div class="nav-logo" style="font-size:18px;">Short<span style="color:#4F46E5;">listed</span></div>
+      <button onclick="showPage('landing'); resetTool();"
+              style="font-size:13px;font-weight:500;color:#666680;background:white;
+                     border:1px solid #DDDDE8;padding:6px 14px;border-radius:8px;
+                     cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s;">
+        ← Back to home
+      </button>
+    </div>
 
-      <div class="tool-title">Analyze your resume</div>
+    <div class="tool-title">Analyze your resume</div>
     <div class="tool-sub">Upload your PDF and paste the job description you're applying for</div>
 
-    <!-- Error -->
     <div class="error-msg" id="error-msg"></div>
 
-    <!-- Inputs -->
     <div class="input-grid" id="input-section">
       <div>
         <div class="inp-label">Your Resume (PDF)</div>
@@ -921,11 +1067,9 @@
       </div>
       <div>
         <div class="inp-label">Job Description</div>
-        <textarea
-          class="jd-input"
-          id="jd-input"
-          placeholder="Paste the full job description here — the more complete, the more accurate your analysis..."
-        ></textarea>
+        <textarea class="jd-input" id="jd-input"
+          placeholder="Paste the full job description here — the more complete, the more accurate your analysis...">
+        </textarea>
       </div>
     </div>
 
@@ -933,13 +1077,11 @@
       <button class="run-btn" id="run-btn" onclick="runAnalysis()">Run Analysis →</button>
     </div>
 
-    <!-- Loading -->
     <div class="loading" id="loading">
       <div class="spinner"></div>
       <div class="loading-text">Analyzing your resume against the job description...</div>
     </div>
 
-    <!-- Results -->
     <div class="results" id="results"></div>
 
   </div>
@@ -954,7 +1096,6 @@
     window.scrollTo(0, 0);
     const landingLinks = document.getElementById('landing-nav-links');
     landingLinks.style.display = page === 'landing' ? 'flex' : 'none';
-  
     if (page === 'landing') {
       history.pushState(null, '', '#');
     } else {
@@ -962,7 +1103,6 @@
     }
   }
 
-  
   window.addEventListener('popstate', function() {
     if (window.location.hash === '#tool') {
       showPage('tool');
@@ -989,44 +1129,25 @@
     const jdText = document.getElementById('jd-input').value.trim();
     const errorMsg = document.getElementById('error-msg');
 
-    // Validate
     errorMsg.style.display = 'none';
-    if (!fileInput.files[0]) {
-      showError('Please upload your resume PDF to continue.');
-      return;
-    }
-    if (!jdText) {
-      showError('Please paste a job description to continue.');
-      return;
-    }
+    if (!fileInput.files[0]) { showError('Please upload your resume PDF to continue.'); return; }
+    if (!jdText) { showError('Please paste a job description to continue.'); return; }
 
-    // Show loading
     document.getElementById('input-section').style.display = 'none';
     document.getElementById('btn-section').style.display = 'none';
     document.getElementById('loading').style.display = 'block';
     document.getElementById('results').style.display = 'none';
 
-    // Build form data
     const formData = new FormData();
     formData.append('resume', fileInput.files[0]);
     formData.append('jd_text', jdText);
 
     try {
-      const response = await fetch('/analyze', {
-        method: 'POST',
-        body: formData,
-      });
-
+      const response = await fetch('/analyze', { method: 'POST', body: formData });
       const data = await response.json();
-
-      if (!response.ok || data.error) {
-        throw new Error(data.error || 'Analysis failed');
-      }
-
-      // Hide loading, show results
+      if (!response.ok || data.error) throw new Error(data.error || 'Analysis failed');
       document.getElementById('loading').style.display = 'none';
       renderResults(data);
-
     } catch (err) {
       document.getElementById('loading').style.display = 'none';
       document.getElementById('input-section').style.display = 'grid';
@@ -1041,12 +1162,16 @@
     el.style.display = 'block';
   }
 
+  // Check if mobile
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
+
   // RENDER RESULTS
   function renderResults(d) {
     const score = d.combined_score;
     const matchPct = d.total_matched + d.total_missing > 0
-      ? Math.round((d.total_matched / (d.total_matched + d.total_missing)) * 100)
-      : 0;
+      ? Math.round((d.total_matched / (d.total_matched + d.total_missing)) * 100) : 0;
 
     let colorClass = score >= 75 ? 'green' : score >= 50 ? 'yellow' : 'red';
     let scoreLabel = score >= 75 ? 'Strong Match' : score >= 50 ? 'Moderate Match' : 'Weak Match';
@@ -1059,14 +1184,11 @@
     let scoreColor = colorClass === 'green' ? '#059669' : colorClass === 'yellow' ? '#D97706' : '#DC2626';
     let scoreBg = colorClass === 'green' ? '#F0FDF4' : colorClass === 'yellow' ? '#FFFBEB' : '#FFF1F2';
     let scoreBorder = colorClass === 'green' ? '#BBF7D0' : colorClass === 'yellow' ? '#FDE68A' : '#FECDD3';
-    let scoreDivider = scoreBorder;
 
     let cappedNote = d.capped
       ? `<div style="margin-top:8px;font-size:12px;color:#DC2626;font-weight:500;">⚠ Score capped — ${d.high_priority_missing} critical keywords missing</div>`
       : '';
 
-    // JD SKILLS LIST
-    // Split into high priority and standard
     const highPrioritySkills = d.all_jd_skills
       .filter(s => s.priority === 'high')
       .sort((a, b) => b.found - a.found || a.keyword.localeCompare(b.keyword));
@@ -1082,14 +1204,17 @@
         ? `<span style="background:#F0FDF4;color:#166534;border:1px solid #BBF7D0;padding:3px 10px;border-radius:20px;font-size:13px;font-weight:500;">${skill.keyword}</span>`
         : `<span style="background:#FFF1F2;color:#9F1239;border:1px solid #FECDD3;padding:3px 10px;border-radius:20px;font-size:13px;font-weight:500;">${skill.keyword}</span>`;
       const catBadge = `<span style="font-size:10px;color:#AAAACC;">${skill.category}</span>`;
-      return `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;
-                          border-bottom:1px solid #F5F5FA;">
+      return `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #F5F5FA;">
         ${icon}${badge}${catBadge}
       </div>`;
     }
 
     function buildSkillsGrid(skills) {
       if (skills.length === 0) return '';
+      // Single column on mobile, two columns on desktop
+      if (isMobile()) {
+        return `<div>${skills.map(buildSkillRow).join('')}</div>`;
+      }
       const mid = Math.ceil(skills.length / 2);
       const col1 = skills.slice(0, mid);
       const col2 = skills.slice(mid);
@@ -1121,7 +1246,6 @@
         </div>`;
     }
 
-    // EXTRA SKILLS
     let extraSkillsHtml = '';
     if (d.extra_skills && d.extra_skills.length > 0) {
       const tags = d.extra_skills.map(s =>
@@ -1139,7 +1263,6 @@
         </div>`;
     }
 
-    // ISSUES
     let issuesHtml = '';
     if (d.formatting_issues.length === 0) {
       issuesHtml = `<div class="issue-item">
@@ -1156,35 +1279,35 @@
       }
     }
 
-    // SUGGESTIONS
     let sugHtml = d.suggestions.map((s, i) => `
       <div class="sug-item">
         <div class="sug-num">${i + 1}</div>
         <div class="sug-text">${s}</div>
       </div>`).join('');
 
-    // RENDER
     document.getElementById('results').innerHTML = `
-
       <div class="success-banner">✓ Analysis complete</div>
 
-      <!-- SUMMARY LINE -->
       <div style="background:#F8F8FC;border:1px solid #EAEAF2;border-radius:12px;
                   padding:16px 20px;margin-bottom:16px;
                   font-size:15px;color:#0A0A14;font-weight:500;line-height:1.5;">
         📋 ${d.summary_line}
       </div>
 
-      <!-- SCORE CARD -->
       <div style="background:${scoreBg};border:1px solid ${scoreBorder};border-radius:14px;
-                  padding:28px 32px;display:flex;align-items:center;gap:28px;margin-bottom:16px;">
-        <div style="font-size:72px;font-weight:800;line-height:1;letter-spacing:-2px;
-                    color:${scoreColor};flex-shrink:0;">${score}%</div>
-        <div style="width:1px;align-self:stretch;background:${scoreDivider};flex-shrink:0;"></div>
-        <div style="flex:1;padding-left:4px;">
+                  padding:${isMobile() ? '20px' : '28px 32px'};
+                  display:flex;flex-direction:${isMobile() ? 'column' : 'row'};
+                  align-items:${isMobile() ? 'flex-start' : 'center'};
+                  gap:${isMobile() ? '16px' : '28px'};margin-bottom:16px;">
+        <div style="font-size:${isMobile() ? '56px' : '72px'};font-weight:800;line-height:1;
+                    letter-spacing:-2px;color:${scoreColor};flex-shrink:0;">${score}%</div>
+        <div style="width:${isMobile() ? '100%' : '1px'};height:${isMobile() ? '1px' : 'auto'};
+                    align-self:${isMobile() ? 'auto' : 'stretch'};
+                    background:${scoreBorder};flex-shrink:0;"></div>
+        <div style="flex:1;padding-left:${isMobile() ? '0' : '4px'};">
           <div style="font-size:11px;font-weight:700;text-transform:uppercase;
                       letter-spacing:0.6px;color:${scoreColor};margin-bottom:4px;">ATS Match Score</div>
-          <div style="font-size:22px;font-weight:700;color:#0A0A14;margin-bottom:6px;">${scoreLabel}</div>
+          <div style="font-size:${isMobile() ? '18px' : '22px'};font-weight:700;color:#0A0A14;margin-bottom:6px;">${scoreLabel}</div>
           <div style="font-size:13px;color:#666680;line-height:1.6;margin-bottom:10px;">${scoreDesc}</div>
           <div style="margin-top:8px;font-size:12px;color:#888899;">
             Based on ${d.total_matched + d.total_missing} skills detected in this job description
@@ -1196,19 +1319,17 @@
         </div>
       </div>
 
-      <!-- JD SKILLS — all in one place -->
       <div class="result-card">
         <div class="result-card-title">🔑 Skills Required by This JD
           <span style="font-size:12px;color:#888;font-weight:400;">
             ${d.total_matched} found · ${d.total_missing} missing · ${d.total_matched + d.total_missing} total
           </span>
         </div>
-        <!-- match bar -->
         <div style="margin-bottom:16px;">
           <div style="background:#F0F0F8;border-radius:6px;height:10px;overflow:hidden;margin-bottom:6px;">
             <div style="height:100%;border-radius:6px;background:#059669;width:${matchPct}%;transition:width 0.6s ease;"></div>
           </div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;">
+          <div style="display:flex;justify-content:space-between;font-size:12px;flex-wrap:wrap;gap:4px;">
             <span style="color:#059669;font-weight:500;">${d.total_matched} found (${matchPct}%)</span>
             <span style="color:#9F1239;font-weight:500;">${d.total_missing} missing (${100 - matchPct}%)</span>
           </div>
@@ -1216,10 +1337,8 @@
         ${jdSkillsHtml}
       </div>
 
-      <!-- EXTRA SKILLS -->
       ${extraSkillsHtml}
 
-      <!-- FORMATTING -->
       <div class="result-card">
         <div class="result-card-title">⚙️ Resume Quality Check
           <span style="font-size:12px;color:#888;font-weight:400;">structure, content, and language</span>
@@ -1227,15 +1346,12 @@
         ${issuesHtml}
       </div>
 
-      <!-- SUGGESTIONS -->
       <div class="result-card">
         <div class="result-card-title">💡 How to Improve</div>
         ${sugHtml}
       </div>
 
-      <!-- ANALYZE AGAIN -->
-      <button class="analyze-again" onclick="resetTool()">Analyze Another Job →</button>
-    `;
+      <button class="analyze-again" onclick="resetTool()">Analyze Another Job →</button>`;
 
     document.getElementById('results').style.display = 'block';
     window.scrollTo(0, 0);
